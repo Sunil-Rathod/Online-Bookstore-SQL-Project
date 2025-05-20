@@ -13,7 +13,7 @@ Customers.csv: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Pr
 
 Contains customer information such as name, city, and country.
 
-Orders.csv: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Orders.csv">Customers.csv</a>
+Orders.csv: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Orders.csv">Orders.csv</a>
 
 Contains records of book orders, including quantity and total amount.
 
