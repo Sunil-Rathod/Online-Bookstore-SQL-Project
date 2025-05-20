@@ -5,15 +5,15 @@ This SQL project analyzes an online bookstore using three datasets: Books, Custo
 
 ## 📌 Datasets:
 
-Books.xlsx: <a href="https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Books.csv"> </a>
+Books.csv: <a href="https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Books.csv">Books.csv</a>
 
 Contains book details including title, author, genre, price, and stock. 
 
-Customers.xlsx: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Customers.csv"> </a>
+Customers.csv: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Customers.csv">Customers.csv</a>
 
 Contains customer information such as name, city, and country.
 
-Orders.xlsx: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Orders.csv"> </a>
+Orders.csv: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Orders.csv">Customers.csv</a>
 
 Contains records of book orders, including quantity and total amount.
 
