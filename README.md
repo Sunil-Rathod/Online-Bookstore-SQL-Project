@@ -28,6 +28,7 @@ CREATE DATABASE OnlineBookstore;
 **-- Create Tables**
 
 DROP TABLE IF EXISTS Books;
+
 CREATE TABLE Books (
 Book_ID SERIAL PRIMARY KEY,
 Title VARCHAR(100),
@@ -40,6 +41,7 @@ Stock INT
 
 
 DROP TABLE IF EXISTS customers;
+
 CREATE TABLE Customers (
 Customer_ID SERIAL PRIMARY KEY,
 Name VARCHAR(100),
@@ -51,6 +53,7 @@ Country VARCHAR(150)
 
 
 DROP TABLE IF EXISTS orders;
+
 CREATE TABLE Orders (
 Order_ID SERIAL PRIMARY KEY,
 Customer_ID INT REFERENCES Customers(Customer_ID),
@@ -222,3 +225,5 @@ FROM books b
 LEFT JOIN orders o ON b.book_id = o.book_id
 GROUP BY b.book_id
 ORDER BY b.book_id;
+
+## Final SQL Project File : <a href="https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/SQL%20Project%20File.sql">SQL Project File</a>
