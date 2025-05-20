@@ -5,15 +5,15 @@ This SQL project analyzes an online bookstore using three datasets: Books, Custo
 
 ## 📌 Datasets:
 
-Books.xlsx: <a href="https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Books.csv"></a>
+Books.xlsx: <a href="https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Books.csv"> </a>
 
 Contains book details including title, author, genre, price, and stock. 
 
-Customers.xlsx: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Customers.csv"></a>
+Customers.xlsx: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Customers.csv"> </a>
 
 Contains customer information such as name, city, and country.
 
-Orders.xlsx: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Orders.csv"></a>
+Orders.xlsx: <a href= "https://github.com/Sunil-Rathod/Online-Bookstore-SQL-Project/blob/main/Orders.csv"> </a>
 
 Contains records of book orders, including quantity and total amount.
 
@@ -26,6 +26,7 @@ CREATE DATABASE OnlineBookstore;
 \c OnlineBookstore;
 
 **-- Create Tables**
+
 DROP TABLE IF EXISTS Books;
 CREATE TABLE Books (
 Book_ID SERIAL PRIMARY KEY,
@@ -37,6 +38,7 @@ Price NUMERIC(10, 2),
 Stock INT
 );
 
+
 DROP TABLE IF EXISTS customers;
 CREATE TABLE Customers (
 Customer_ID SERIAL PRIMARY KEY,
@@ -47,6 +49,7 @@ City VARCHAR(50),
 Country VARCHAR(150)
 );
 
+
 DROP TABLE IF EXISTS orders;
 CREATE TABLE Orders (
 Order_ID SERIAL PRIMARY KEY,
@@ -56,6 +59,7 @@ Order_Date DATE,
 Quantity INT,
 Total_Amount NUMERIC(10, 2)
 );
+
 
 **-- Import Data**
 COPY Books(Book_ID, Title, Author, Genre, Published_Year, Price, Stock)
@@ -79,24 +83,29 @@ CSV HEADER;
 SELECT * FROM Books
 WHERE Genre='Fiction';
 
+
 • Find books published after the year 1950:
 
 SELECT * FROM Books
 WHERE Published_year>1950;
 
+
 • List all customers from the Canada:
 SELECT * FROM Customers
 WHERE country='Canada';
+
 
 • Show orders placed in November 2023:
 
 SELECT * FROM Orders
 WHERE order_date BETWEEN '2023-11-01' AND '2023-11-30';
 
+
 • Retrieve the total stock of books available:
 
 SELECT SUM(stock) AS Total_Stock
 FROM Books;
+
 
 • Find the details of the most expensive book:
 
@@ -104,19 +113,23 @@ SELECT * FROM Books
 ORDER BY Price DESC
 LIMIT 1;
 
+
 • Show all customers who ordered more than 1 quantity of a book:
 
 SELECT * FROM Orders
 WHERE quantity>1;
+
 
 • Retrieve all orders where the total amount exceeds $20:
 
 SELECT * FROM Orders
 WHERE total_amount>20;
 
+
 • List all genres available in the Books table:
 
 SELECT DISTINCT genre FROM Books;
+
 
 • Find the book with the lowest stock:
 
@@ -124,10 +137,12 @@ SELECT * FROM Books
 ORDER BY stock
 LIMIT 1;
 
+
 • Calculate the total revenue generated from all orders:
 
 SELECT SUM(total_amount) AS Revenue
 FROM Orders;
+
 
 ## Advanced Queries:
 
@@ -138,11 +153,13 @@ FROM Orders o
 JOIN Books b ON o.book_id = b.book_id
 GROUP BY b.Genre;
 
+
 • Find the average price of books in the "Fantasy" genre:
 
 SELECT AVG(price) AS Average_Price
 FROM Books
 WHERE Genre = 'Fantasy';
+
 
 • List customers who have placed at least 2 orders:
 
@@ -151,6 +168,7 @@ FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 GROUP BY o.customer_id, c.name
 HAVING COUNT(Order_id) >= 2;
+
 
 • Find the most frequently ordered book:
 
@@ -161,12 +179,14 @@ GROUP BY o.book_id, b.title
 ORDER BY ORDER_COUNT DESC
 LIMIT 1;
 
+
 • Show the top 3 most expensive books of 'Fantasy' Genre:
 
 SELECT * FROM books
 WHERE genre = 'Fantasy'
 ORDER BY price DESC
 LIMIT 3;
+
 
 • Retrieve the total quantity of books sold by each author:
 
@@ -175,12 +195,14 @@ FROM orders o
 JOIN books b ON o.book_id = b.book_id
 GROUP BY b.Author;
 
+
 • List the cities where customers who spent over $30 are located:
 
 SELECT DISTINCT c.city, total_amount
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 WHERE o.total_amount > 30;
+
 
 • Find the customer who spent the most on orders:
 
@@ -191,6 +213,7 @@ GROUP BY c.customer_id, c.name
 ORDER BY Total_spent DESC
 LIMIT 1;
 
+
 • Calculate the stock remaining after fulfilling all orders:
 
 SELECT b.book_id, b.title, b.stock, COALESCE(SUM(o.quantity),0) AS Order_quantity,
@@ -199,4 +222,3 @@ FROM books b
 LEFT JOIN orders o ON b.book_id = o.book_id
 GROUP BY b.book_id
 ORDER BY b.book_id;
-
